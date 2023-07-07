@@ -83,11 +83,12 @@ class FixedLayout(context: Context) : ItemsLayoutContainer(context) {
             return
         }
 
-        val current = getChildAt(oldSelectedIndex) as BottomNavigationFixedItemView
-        val child = getChildAt(index) as BottomNavigationFixedItemView
+        val current = getChildAt(oldSelectedIndex) as BottomNavigationFixedItemView?
+        val child = getChildAt(index) as BottomNavigationFixedItemView?
+        val willAnimate = animate && null != current && null != child
 
-        current.setExpanded(false, 0, animate)
-        child.setExpanded(true, 0, animate)
+        current?.setExpanded(false, 0, animate)
+        child?.setExpanded(true, 0, animate)
     }
 
     override fun setItemEnabled(index: Int, enabled: Boolean) {
